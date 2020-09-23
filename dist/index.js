@@ -70,7 +70,7 @@ var init = function init(element, properties) {
     var index = 0,
         strLen = str.length;
     var intervalID = setInterval(function () {
-      props.placeholder ? element.placeholder += str[index] : element.textContent += str[index];
+      props.placeholder ? element.placeholder += str[index] : element.innerHTML += str[index];
       if (++index === strLen) return onStringTyped(intervalID, props);
     }, props.typeSpeed);
   };

@@ -43,7 +43,7 @@ export const init = (element, properties) => {
     let index = 0,
       strLen = str.length;
     let intervalID = setInterval(() => {
-      props.placeholder ? element.placeholder += str[index] : element.textContent += str[index];
+      props.placeholder ? element.placeholder += str[index] : element.innerHTML += str[index];
       if (++index === strLen) return onStringTyped(intervalID, props);
     }, props.typeSpeed);
   }
