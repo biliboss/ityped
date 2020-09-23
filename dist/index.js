@@ -89,10 +89,10 @@ var init = function init(element, properties) {
   };
 
   var eraseString = function eraseString(props) {
-    var str = props.placeholder ? element.placeholder : element.textContent,
+    var str = props.placeholder ? element.placeholder : element.innerHTML,
         strLen = str.length;
     var intervalID = setInterval(function () {
-      props.placeholder ? element.placeholder = element.placeholder.substr(0, --strLen) : element.textContent = str.substr(0, --strLen);
+      props.placeholder ? element.placeholder = element.placeholder.substr(0, --strLen) : element.innerHTML = str.substr(0, --strLen);
       if (strLen === 0) return onStringErased(intervalID, props);
     }, props.backSpeed);
   };
@@ -106,8 +106,8 @@ var init = function init(element, properties) {
   var setCursor = function setCursor(element, props) {
     var cursorSpan = document.createElement('span');
     cursorSpan.classList.add('ityped-cursor');
-    cursorSpan.textContent = '|';
-    cursorSpan.textContent = props.cursorChar;
+    cursorSpan.innerHTML = '|';
+    cursorSpan.innerHTML = props.cursorChar;
     element.insertAdjacentElement('afterend', cursorSpan);
   };
 

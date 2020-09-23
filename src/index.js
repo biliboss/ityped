@@ -60,12 +60,12 @@ export const init = (element, properties) => {
   }
 
   const eraseString = (props) => {
-    let str = props.placeholder ? element.placeholder : element.textContent,
+    let str = props.placeholder ? element.placeholder : element.innerHTML,
       strLen = str.length;
     let intervalID = setInterval(() => {
       props.placeholder
         ? element.placeholder = element.placeholder.substr(0, --strLen)
-        : element.textContent = str.substr(0, --strLen);
+        : element.innerHTML = str.substr(0, --strLen);
       if (strLen === 0) return onStringErased(intervalID, props);
     }, props.backSpeed);
   }
@@ -79,8 +79,8 @@ export const init = (element, properties) => {
   const setCursor = (element, props) => {
     let cursorSpan = document.createElement('span');
     cursorSpan.classList.add('ityped-cursor');
-    cursorSpan.textContent = '|';
-    cursorSpan.textContent = props.cursorChar;
+    cursorSpan.innerHTML = '|';
+    cursorSpan.innerHTML = props.cursorChar;
     element.insertAdjacentElement('afterend', cursorSpan);
   }
 
